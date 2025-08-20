@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
     int part;
-    cout << "Enter the part of the assignment you want to run (1 for Transpose, 2 for Addition, 3 for Multiplication): ";
+    cout << "Enter the part (1 for Transpose, 2 for Addition, 3 for Multiplication): ";
     cin >> part;
     int mat[4][4] = {{0, 1, 0, 0}, {0, 0, 2, 0}, {0, 0, 0, 3}, {4, 0, 0, 0}};
     int sparse[4][3];
@@ -98,3 +98,4 @@ int main()
     }
     return 0;
 }
+
