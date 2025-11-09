@@ -49,37 +49,25 @@ public:
         cout << "NULL" << endl;
     }
 };
-void removeLoop(node *list)
-{
-    if (list == NULL || list->next == NULL)
-    {
+void removeLoop(node* head) {
+    if (head == NULL || head->next == NULL)
         return;
-    }
-    node *slowPtr = list->next, *fastPtr = list->next->next;
-    node *prevNode = list->next;
-    while (fastPtr != NULL && fastPtr->next != NULL)
-    {
-        if (slowPtr == fastPtr)
-        {
-            slowPtr = list;
+    node* slow = head;
+    node* fast = head;
+    while (fast && fast->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast)
             break;
-        }
-        slowPtr = slowPtr->next;
-        prevNode = fastPtr->next;
-        fastPtr = fastPtr->next->next;
     }
-    if (fastPtr == NULL || fastPtr->next == NULL)
-    {
+    if (fast == NULL || fast->next == NULL)
         return;
+    slow = head;
+    while (slow->next != fast->next) {
+        slow = slow->next;
+        fast = fast->next;
     }
-    while (slowPtr != fastPtr)
-    {
-        prevNode = fastPtr;
-        slowPtr = slowPtr->next;
-        fastPtr = fastPtr->next;
-    }
-    prevNode->next = NULL;
-    return;
+    fast->next = NULL;
 }
 int main()
 {
@@ -108,3 +96,4 @@ int main()
 
     return 0;
 }
+
